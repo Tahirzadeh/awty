@@ -1,9 +1,11 @@
 package edu.washington.abbast.arewethereyet;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Intent alarmIntent = new Intent(this, AlarmReceiver.class);
         final Button start = (Button) findViewById(R.id.start);
+
+        //Another permission request to send SMS's
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
